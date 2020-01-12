@@ -1,4 +1,5 @@
 import React from "react";
+import { ToDoList } from "./reducers/todo-reducer";
 
 import "./App.css";
 
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>To-Do List</h1>
+        <ToDoList />
       </header>
     </div>
   );
