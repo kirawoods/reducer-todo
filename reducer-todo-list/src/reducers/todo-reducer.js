@@ -12,7 +12,19 @@ export function ToDoList() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
+      <form>
+        <label>Add an Item: </label>
+        <input type="text"></input>
+        <button>Submit</button>
+      </form>
       <div className="count">{state.item}</div>
     </>
   );
 }
+
+//To-Do:
+//Map over items
+//Toggle Complete
+//Add an Item
+//Clear Completed Items
+//Separate Out Components
