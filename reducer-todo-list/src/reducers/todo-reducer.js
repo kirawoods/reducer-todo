@@ -5,11 +5,6 @@ export const initialState = [
     item: "Learn about reducers",
     completed: false,
     id: 3892987589
-  },
-  {
-    item: "Learn redux",
-    completed: false,
-    id: 3892987587
   }
 ];
 
@@ -36,7 +31,7 @@ export function ToDoList() {
   const handleSubmit = event => {
     event.preventDefault();
   };
-  console.log(state);
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -49,7 +44,12 @@ export function ToDoList() {
         </button>
       </form>
       {state.map(todo => (
-        <p key={todo.id}>{todo.item}</p>
+        <p
+          key={todo.id}
+          className={`item${todo.completed ? " completed" : ""}`}
+        >
+          {todo.item}
+        </p>
       ))}
     </>
   );
