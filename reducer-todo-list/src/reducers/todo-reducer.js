@@ -16,6 +16,7 @@ export const reducer = (state = [], action) => {
         { id: Date.now(), item: action.payload, completed: false }
       ];
     // case "TOGGLE_COMPLETED":
+
     // case "CLEAR_COMPLETED":
     default:
       return state;
@@ -46,7 +47,8 @@ export function ToDoList() {
       {state.map(todo => (
         <p
           key={todo.id}
-          className={`item${todo.completed ? " completed" : ""}`}
+          className={`item${todo.completed ? "completed" : ""}`}
+          //   onClick={dispatch({ type: "TOGGLE_COMPLETED", payload: todo.id })}
         >
           {todo.item}
         </p>
@@ -56,7 +58,6 @@ export function ToDoList() {
 }
 
 //To-Do:
-//Map over items
 //Toggle Complete
 //Add an Item
 //Clear Completed Items
