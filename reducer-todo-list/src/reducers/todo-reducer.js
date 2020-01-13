@@ -18,7 +18,7 @@ export const reducer = (state = [], action) => {
     case "ADD_TODO":
       return [
         ...state,
-        { id: Date.now(), item: action.payload.item, completed: false }
+        { id: Date.now(), item: action.payload, completed: false }
       ];
     // case "TOGGLE_COMPLETED":
     // case "CLEAR_COMPLETED":
@@ -39,13 +39,17 @@ export function ToDoList() {
   console.log(state);
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Add an Item: </label>
-        <input type="text"></input>
-        <button>Submit</button>
+        <input type="text" onChange={handleChange}></input>
+        <button
+          onClick={() => dispatch({ type: "ADD_TODO", payload: newTodo })}
+        >
+          Submit
+        </button>
       </form>
       {state.map(todo => (
-        <p>{todo.item}</p>
+        <p key={todo.id}>{todo.item}</p>
       ))}
     </>
   );
