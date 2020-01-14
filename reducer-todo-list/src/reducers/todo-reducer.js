@@ -20,7 +20,8 @@ export const reducer = (state = [], action) => {
         todo.id === action.payload && (todo.completed = !todo.completed);
       });
       return [...state];
-    // case "CLEAR_COMPLETED":
+    case "CLEAR_COMPLETED":
+      return state.filter(todo => !todo.completed);
     default:
       return state;
   }
@@ -47,13 +48,16 @@ export function ToDoList() {
           Submit
         </button>
       </form>
+      <button onClick={() => dispatch({ type: "CLEAR_COMPLETED" })}>
+        Clear Completed To-Dos
+      </button>
       {state.map(todo => (
         <p
           key={todo.id}
-          className={`item${todo.completed ? "completed" : ""}`}
           onClick={() =>
             dispatch({ type: "TOGGLE_COMPLETED", payload: todo.id })
           }
+          className={`item${todo.completed ? " completed" : ""}`}
         >
           {todo.item}
         </p>
@@ -63,6 +67,5 @@ export function ToDoList() {
 }
 
 //To-Do:
-//Toggle Complete
 //Clear Completed Items
 //Separate Out Components
