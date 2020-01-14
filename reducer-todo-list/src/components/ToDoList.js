@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import { initialState, reducer } from "../reducers/todo-reducer";
+import "./ToDoList.css";
 
 export function ToDoList() {
   const [state, dispatch] = useReducer(reducer, initialState);
