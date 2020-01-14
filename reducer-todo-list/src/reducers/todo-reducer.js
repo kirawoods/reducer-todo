@@ -67,5 +67,5 @@ export function ToDoList() {
 }
 
 //To-Do:
-//Clear Completed Items
 //Separate Out Components
+//Style
