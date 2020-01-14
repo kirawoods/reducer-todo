@@ -45,11 +45,7 @@ export function ToDoList() {
         </button>
       </form>
       {state.map(todo => (
-        <p
-          key={todo.id}
-          className={`item${todo.completed ? "completed" : ""}`}
-          //   onClick={dispatch({ type: "TOGGLE_COMPLETED", payload: todo.id })}
-        >
+        <p key={todo.id} className={`item${todo.completed ? "completed" : ""}`}>
           {todo.item}
         </p>
       ))}
@@ -59,6 +55,5 @@ export function ToDoList() {
 
 //To-Do:
 //Toggle Complete
-//Add an Item
 //Clear Completed Items
 //Separate Out Components
