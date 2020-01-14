@@ -15,8 +15,11 @@ export const reducer = (state = [], action) => {
         ...state,
         { id: Date.now(), item: action.payload, completed: false }
       ];
-    // case "TOGGLE_COMPLETED":
-
+    case "TOGGLE_COMPLETED":
+      state.forEach(todo => {
+        todo.id === action.payload && (todo.completed = !todo.completed);
+      });
+      return [...state];
     // case "CLEAR_COMPLETED":
     default:
       return state;
@@ -32,7 +35,7 @@ export function ToDoList() {
   const handleSubmit = event => {
     event.preventDefault();
   };
-
+  console.log(state);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -45,7 +48,13 @@ export function ToDoList() {
         </button>
       </form>
       {state.map(todo => (
-        <p key={todo.id} className={`item${todo.completed ? "completed" : ""}`}>
+        <p
+          key={todo.id}
+          className={`item${todo.completed ? "completed" : ""}`}
+          onClick={() =>
+            dispatch({ type: "TOGGLE_COMPLETED", payload: todo.id })
+          }
+        >
           {todo.item}
         </p>
       ))}
